@@ -21,6 +21,21 @@ greet('gautham ')
 var greetanon  = name => console.log('hello this is'+name) ;
 greetanon('gautham')
 
+var squarenumber = x => x*x;
+console.log(squarenumber(10))
+
+//Arrow fucntion using this context 
+
+const person  = {
+    fname :"gautham",
+    lname : "kedia",
+    getfullname : function(){
+        return this.fname +" "+  this.lname;
+    }
+};
+
+console.log(person.getfullname());
+
 
 
 
