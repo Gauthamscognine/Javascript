@@ -54,6 +54,8 @@ setTimeout(() => {
   }, 1000);
 
 }, 1000);
+//This call back hell also called as  “pyramid of doom” was painful to read, debug, and maintain.
 
 
+// in order to avoid this we can make use of primises which look more clean and readable . It is the succesor of callbacks.
 

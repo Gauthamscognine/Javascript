@@ -1,5 +1,9 @@
 // Hoisting is basically , the havascript itself pushes all the varaibale s and fucntion on top of their scope before the code execution 
 
+// Hoisting is not a feature we use on purpose.
+// It’s a behavior of the JavaScript engine that helps the language run by allocating memory before execution.
+// Function hoisting is somewhat useful; variable hoisting (var) mostly causes bugs, which is why we use let and const today
+
 // You can make us of fucntion even before you actually declare them 
 
 console.log(a); // undefined
@@ -29,3 +33,4 @@ function sayHi() {
 
 // var sayHello is hoisted but set to undefined.
 //--------------------------------------------------------------------------------------------------------------------------------
+

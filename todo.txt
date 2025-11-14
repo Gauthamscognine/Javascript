@@ -1,0 +1,258 @@
+🟩 PHASE 1: JavaScript Foundations (Absolutely Mandatory)
+✔ 1. Basics of JS
+
+What is JavaScript
+
+How JS runs (browser + Node)
+
+Linking JS to HTML
+
+✔ 2. Variables
+
+var, let, const
+
+Scope
+
+Hoisting
+
+✔ 3. Data Types
+
+Number, String, Boolean
+
+null, undefined
+
+BigInt, Symbol
+
+Type conversion
+
+✔ 4. Operators
+
+Arithmetic, Assignment
+
+Comparison (== vs ===)
+
+Logical operators
+
+Ternary operator
+
+✔ 5. Conditionals
+
+if, else, switch
+
+✔ 6. Loops
+
+for
+
+while
+
+do…while
+
+break / continue
+
+✔ 7. Functions
+
+Function declaration
+
+Function expression
+
+Arrow functions
+
+Parameters & return
+
+Default parameters
+
+✔ Mini Projects (beginner)
+
+Calculator (console)
+
+Temperature converter
+
+Word counter
+
+BMI calculator
+
+🟩 PHASE 2: Intermediate JavaScript — Core Skills
+✔ 8. Arrays
+
+push, pop, shift, unshift
+
+map, filter, reduce
+
+some, every, find, sort
+
+Array destructuring
+
+✔ 9. Objects
+
+Key–value pairs
+
+Object methods
+
+this keyword
+
+Spread operator {...}
+
+Object destructuring
+
+✔ 10. DOM Manipulation (Browser)
+
+document.querySelector
+
+Changing text, HTML, style
+
+Creating / removing elements
+
+Event listeners (click, input)
+
+Forms & inputs
+
+✔ 11. ES6+ Important Features
+
+Template literals
+
+Let/const
+
+Destructuring
+
+Spread/rest
+
+Arrow functions
+
+Modules (import/export)
+
+✔ Mini Projects
+
+Todo App (with DOM)
+
+Digital Clock
+
+Image Slider
+
+Form Validation
+
+Color Picker
+
+🟩 PHASE 3: Advanced JavaScript — The Real Strength
+✔ 12. Asynchronous JavaScript
+
+Callbacks
+
+Callback Hell
+
+Promises
+
+.then() / .catch()
+
+async/await
+
+Promise chaining
+
+✔ 13. Important Browser APIs
+
+fetch() API
+
+Local Storage
+
+Session Storage
+
+Cookies
+
+FileReader API
+
+Geolocation API
+
+✔ 14. Error Handling
+
+try/catch
+
+Throwing errors
+
+✔ 15. Timing Functions
+
+setTimeout
+
+setInterval
+
+✔ Mini Projects
+
+Weather App (fetch API)
+
+Movie Search App (OMDb API)
+
+GitHub Profile Finder
+
+Notes App (LocalStorage)
+
+🟩 PHASE 4: JavaScript Deep Concepts (Interview Level)
+✔ 16. Important Concepts
+
+Closures
+
+Lexical Scope
+
+Hoisting (deep)
+
+Prototype & Prototype Chain
+
+this (call, apply, bind)
+
+Event Loop
+
+Microtasks vs Macrotasks
+
+Debouncing
+
+Throttling
+
+Module pattern
+
+Currying
+
+✔ 17. Data Structures in JS
+
+Map
+
+Set
+
+WeakMap / WeakSet
+
+Arrays vs Objects
+
+Stack & Queue implementation
+
+✔ Mini Projects
+
+Debounce Search Bar
+
+Custom Promise implementation
+
+Infinite Scroll using API
+
+🟩 PHASE 5: Build Real Frontend Apps using JS
+✔ 18. Component Based JS (pre–React mindset)
+
+Create reusable components
+
+Dynamic rendering
+
+SPA concepts
+
+✔ 19. Fetching & Rendering Data
+
+Pagination
+
+Infinite Scroll
+
+Filters
+
+Sorting
+
+✔ Mini Projects
+
+Instagram Feed Clone
+
+Shopping Cart
+
+Quiz App
+
+Music Player
