@@ -40,6 +40,8 @@ console.log(person.getfullname());
 
 
 
+
+
 function calculate(a, b, operation) { 
 return operation(a, b); 
 } 
@@ -53,5 +55,8 @@ return x - y;
 
 console.log(calculate(10,20,add));
 console.log(calculate(20,10,subtract));// the functions can also be passed as a parameter to another fucntion and used in that particular function
+
+
+
 
 
