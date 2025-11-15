@@ -24,7 +24,7 @@ doSomething(function() {
 
 //call backs can be synch and also asynch , when we make use of a specifc async function then a callbakc will be asyn .
 // below is a async callbakc and above are the sync callbacks  
-// most of the callback async function are timers , Network / APINetwork / API , primises etc...... 
+// most of the callback async function are timers , Network / APINetwork / API , promises etc...... 
 function checkcallback(){
     setTimeout(()=>{
         console.log("this is chintu here in callback ")

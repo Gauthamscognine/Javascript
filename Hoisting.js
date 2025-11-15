@@ -9,22 +9,24 @@
 console.log(a); // undefined
 var a = 10;
 
-// console.log(b); //  Error: Cannot access 'b' before initialization
-// let b = 20;
+console.log(b); //  Error: Cannot access 'b' before initialization
+let b = 20;
 
-// let b;  // hoisted but in TDZ
-// console.log(b); //  Can't use before line of declaration
-// b = 20;
+let b;  // hoisted but in TDZ
+console.log(b); //  Can't use before line of declaration
+b = 20;
 // Temporal Dead Zone (TDZ) = The time between when the variable is hoisted AND when it is initialized.
 // let and const cannot be accessed in TDZ → gives error.
 
 //-------------------------------------------------------------------------------------------------------------------------------
-
-sayHi(); // Works
-
 function sayHi() {
   console.log("Hello!");
 }
+sayHi(); // Works
+
+// function sayHi() {
+//   console.log("Hello!");
+// }
 
 // sayHello(); //  Error
 // var sayHello = function() {
