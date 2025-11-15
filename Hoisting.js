@@ -9,8 +9,8 @@
 console.log(a); // undefined
 var a = 10;
 
-console.log(b); //  Error: Cannot access 'b' before initialization
-let b = 20;
+// console.log(b); //  Error: Cannot access 'b' before initialization
+// let b = 20;
 
 let b;  // hoisted but in TDZ
 console.log(b); //  Can't use before line of declaration
