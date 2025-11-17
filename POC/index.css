@@ -1,0 +1,45 @@
+body {
+    background: #222;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.search-area {
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    background: #ff9800;
+    color: black;
+    cursor: pointer;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #333;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 5px;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POC using OMDB API </title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>POC using OMDB API </h1>
+
+        <div class="search-area">
+            <input type="text" id="searchInput" placeholder="Search movies...">
+            
+            <select id="typeFilter">
+                <option value="">All Types</option>
+                <option value="movie">Movie</option>
+                <option value="series">Series</option>
+                <option value="episode">Episode</option>
+            </select>
+
+            <input type="number" id="yearFilter" placeholder="Year">
+
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div id="results" class="results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
