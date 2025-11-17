@@ -1,0 +1,8 @@
+Naming Conventions
+Code Formatting
+Commenting & Documentation
+Modular & Reusable Code
+Error Handling
+Version Control Practices
+Testing
+Maintain Code Consistency
