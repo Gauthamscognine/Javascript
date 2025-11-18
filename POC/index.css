@@ -4,11 +4,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.container {
-    width: 90%;
-    margin: 30px auto;
-    text-align: center;
-}
 
 .search-area {
     margin-bottom: 20px;
@@ -16,21 +11,17 @@ body {
 
 input, select, button {
     padding: 10px;
-    margin: 5px;
+     margin: 5px; /*margin between input box , button  */
     border-radius: 500px;
-    border: none;
 }
 
 button {
-    background: #ff9800;
+    padding: 10px;
     color: black;
-    cursor: pointer
 }
 
 .results {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 20px;
+    margin-bottom: 20px;
 }
 
 .card {
@@ -40,6 +31,6 @@ button {
 }
 
 .card img {
-    width: 100%;
-    border-radius: px;
+    width: 20%;
+    border-radius: 11px;
 }
