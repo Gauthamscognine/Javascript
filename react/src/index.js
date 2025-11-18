@@ -14,8 +14,8 @@ root.render(
     {
     /* <App />
     <LoginPage/> */}
-    {/* <Parent/> */}
-    <Lifeapp/>
+    <Parent/>
+    {/* <Lifeapp/> */}
 
    </React.StrictMode>
    

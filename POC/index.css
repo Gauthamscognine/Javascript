@@ -17,14 +17,14 @@ body {
 input, select, button {
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 500px;
     border: none;
 }
 
 button {
     background: #ff9800;
     color: black;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .results {
@@ -34,12 +34,12 @@ button {
 }
 
 .card {
-    background: #333;
+    background: #090317;
     padding: 10px;
     border-radius: 7px;
 }
 
 .card img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: px;
 }
