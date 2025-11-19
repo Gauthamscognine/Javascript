@@ -1,4 +1,4 @@
-const API_KEY = "33a7e8c1"; 
+const API_KEY = "943e6fc6"; 
 
 document.getElementById("searchBtn").addEventListener("click", fetchMovies);
 
@@ -19,13 +19,12 @@ async function fetchMovies() {
     if (year) url += `&y=${year}`;// query parameters 
 
         try {
-            const data = fetch(url).then(re =>{
-                return re.json();
-            });// what if post and how do we implement it 
-            // const data = await res.json();
+            const res = await fetch(url);
+            const data = await res.json();
 
 
-
+            console.log("URL sent:", url);
+            console.log("FULL API RESPONSE:", data);
 
             if (data.Response === "False") {// check value and type both 
                 resultsDiv.innerHTML = `<p>${data.Error}</p>`;
@@ -38,7 +37,6 @@ async function fetchMovies() {
                     <h3>${movie.Title}</h3>
                     <p>${movie.Year}</p>
                     <p>Type: ${movie.Type}</p>
-                    <p> -----------------------------</p>
                 </div>
             `)
 
@@ -51,11 +49,7 @@ async function fetchMovies() {
 //npm wh questions // camelcase or pascal case m when and where . 
 
 
-
-
-
-
-// const API_KEY = "33a7e8c1"; 
+// const API_KEY = "943e6fc6"; 
 
 // document.getElementById("searchBtn").addEventListener("click", fetchMovies);
 
@@ -75,33 +69,28 @@ async function fetchMovies() {
 //     if (type) url += `&type=${type}`;
 //     if (year) url += `&y=${year}`;// query parameters 
 
-//         try {
-//             const res = await fetch(url);// what if post and how do we implement it 
-//             console.log(res)
-//             const data = await res.json();
-//             console.log(data)
-//             console.log("URL sent:", url);
-//             console.log("FULL API RESPONSE:", data);
+//     fetch(url)
+//     .then(res => res.json())
+//     .then(data => {
 
-//             if (data.Response === "False") {// check value and type both 
-//                 resultsDiv.innerHTML = `<p>${data.Error}</p>`;
-//                 return;
-//             }
+//         console.log("URL sent:", url);
+//         console.log("FULL API RESPONSE:", data);
 
-//             resultsDiv.innerHTML = data.Search.map(movie => `
-//                 <div class="card">
-//                     <img src="${movie.Poster !== "N/A" ? movie.Poster : "No_Image_Available.jpg"}">
-//                     <h3>${movie.Title}</h3>
-//                     <p>${movie.Year}</p>
-//                     <p>Type: ${movie.Type}</p>
-//                     <p> -----------------------------</p>
-//                 </div>
-//             `)
-
-
-//         } catch (error) {
-//             resultsDiv.innerHTML = "<p>Error fetching data.</p>";
+//         if (data.Response === "False") {
+//             resultsDiv.innerHTML = `<p>${data.Error}</p>`;
+//             return;
 //         }
+
+//         resultsDiv.innerHTML = data.Search.map(movie => `
+//             <div class="card">
+//                 <img src="${movie.Poster !== "N/A" ? movie.Poster : "No_Image_Available.jpg"}">
+//                 <h3>${movie.Title}</h3>
+//                 <p>${movie.Year}</p>
+//                 <p>Type: ${movie.Type}</p>
+//             </div>
+//         `).join("");  // IMPORTANT
+//     })
+//     .catch(error => {
+//         resultsDiv.innerHTML = "<p>Error fetching data.</p>";
+//     });
 //     }
-// // try to implement without async and await // display iin the form of cards as in jio hotstar 
-// //npm wh questions // camelcase or pascal case m when and where . 
