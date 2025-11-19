@@ -1,36 +1,39 @@
 body {
-    background: #222;
-    color: white;
+    text-align: center;
     font-family: Arial, sans-serif;
 }
-
-
-.search-area {
-    margin-bottom: 20px;
-}
-
 input, select, button {
+    background-color: lightgrey;
     padding: 10px;
      margin: 5px; /*margin between input box , button  */
     border-radius: 500px;
 }
+h1{
+    color: chocolate;
+}
 
 button {
+    background-color: lightgrey;
     padding: 10px;
-    color: black;
-}
-
-.results {
-    margin-bottom: 20px;
-}
+}   
 
 .card {
-    background: #090317;
     padding: 10px;
     border-radius: 7px;
 }
 
-.card img {
-    width: 20%;
+
+img {
+    width: 30%;
     border-radius: 11px;
 }
+
+
+
+
+
+
+
+
+
+
