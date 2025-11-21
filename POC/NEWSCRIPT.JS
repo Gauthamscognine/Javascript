@@ -57,11 +57,8 @@ async function fetchMovies() {
                     <p>Type: ${movie.Type}</p>
                 </div>
             `)
-
-
         } catch (error) {
             resultsDiv.innerHTML = "<p>Error fetching data.</p>";
         }
     }
 
-    // complex model , dom api , aasynch , fucntion types 

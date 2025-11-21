@@ -1,4 +1,3 @@
-console.log("hello i am learning js")
 let x = 6;
 x = 6+x;
 console.log(x);
@@ -6,13 +5,11 @@ console.log(x);
 x = 10;
 console.log(x);
 
-let  val = "chinti";
-console.log(val);
+let  val = "javascript";
 if(true){
     val =val + "ff"
     console.log(val)
 }
-console.log(20);
 
 var jj;
 jj = "ohh yeah"
@@ -20,13 +17,7 @@ console.log(jj)
 let gg;
 console.log(gg);
 age = 25
-
 console.log(age)
-
-let m = 1;
-var n = 2;
-console.log(m);
-console.log(n);
 
 let nn = null
 nn = nn + 100;
@@ -36,6 +27,7 @@ const hh = true;
 const check  = undefined
 console.log(typeof(check))
 console.log(typeof(hh))
+nn = nn+"chintu"
 console.log(typeof(nn))
 console.log(hh);
 
@@ -59,12 +51,12 @@ console.log(Object.keys(obj));
 console.log(Object.values(obj));  
 console.log(Object.entries(obj)); 
 
-// Object.freeze(obj);// doesnt allow to add , remove or even update 
-// user.age = 30; //  ignored
-// user.city = "NY"; //ignored
+Object.freeze(obj);// doesnt allow to add , remove or even update 
+user.age = 30; //  ignored
+user.city = "NY"; //ignored
 
-// Object.seal(obj);// doesnt allow to add or delete but allows to update the existing thing 
-// obj.age = 33; //allowed because age already exists
+Object.seal(obj);// doesnt allow to add or delete but allows to update the existing thing 
+obj.age = 33; //allowed because age already exists
 
 
 let ar = ['chintu', 'gautham ','shahsi' , 33]

@@ -1,7 +1,7 @@
 // promise is basically like a placeholder which holds a a value in the future 
 // Three stages are : 1, pending  , fulfilled , rejected 
 
-const  promises  = new Promise((resoleve , reject ) =>{
+const  promises  = new Promise((resolve , reject ) =>{
     let tf = true;
     if(tf) resoleve("this is true ");
     else reject("u r wrong bro ")
