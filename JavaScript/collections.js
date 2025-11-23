@@ -17,3 +17,28 @@ for (const key of keyIterator) {
  } 
 
 console.log(mySets.size);
+// ARRAYS FROM HERE 
+
+const ar = [1,2,3];
+ar.push(4);
+console.log(ar)
+ar.pop();
+console.log(ar)
+ar.unshift(0);
+console.log(ar)
+ar.shift();
+console.log(ar)
+ar.sort();
+ar.splice(1,2);
+console.log(ar)
+ar.reverse();
+console.log(ar)
+console.log(ar)
+//DIFFRENT FUNCTIONS SUCH AS MAP FIlter AND ALL 
+
+ar.push(2);
+ar.push(3)
+ar.push(4)
+
+const arr = ar.map(n =>{return n*2});// if u write () , then return is automatic , but if u make use of {} , then u must explicitly apply return 
+console.log(arr);
