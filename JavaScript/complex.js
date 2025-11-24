@@ -62,7 +62,8 @@ const alien = {
         lname:"hp",
         spec :"i5",
         ram:4
-    }
+    },
+    sib:[1,2,3,4,5]
 }
 
 console.log(alien?.laptop);// what ? does is , it finds the lenght only when lanmes is present 
@@ -89,8 +90,36 @@ console.log(alien.greeting());
 
 // if u wanna make use of the properties of the same object in the same object function , then u can make use of this keyword
 alien.greetingtwo = function(){
-    console.log(`hello alien ${this.name}`);
+    console.log(`hello alien ${this.name} this is gautam testting here `);
 }
 console.log(alien.greetingtwo());
 
+alien.laptop.color = "black";
+delete alien.laptop.color;
 
+console.log(alien.sib);
+const siblings  = alien.sib
+console.log(siblings);
+
+alien.laptop.name = 'chintu';// the nme parameter is blocked scope , when we do alien.name we get hardhik but when we do alinem.laptop.name we get chintu 
+
+console.log(alien.greetingtwo());
+
+
+
+students = [
+ { id: 1, name: "A" },
+ { id: 2, name: "B" }
+]
+
+marks = [
+ { id: 1, math: 90, science: 88 },
+ { id: 2, math: 85, science: 80 }
+]
+
+address = [
+ { id: 1, city: "Delhi", pincode: 110001 },
+ { id: 2, city: "Hyderabad", pincode: 500001 }
+]
+
+for(let )

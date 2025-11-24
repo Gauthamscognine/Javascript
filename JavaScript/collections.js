@@ -40,5 +40,5 @@ ar.push(2);
 ar.push(3)
 ar.push(4)
 
-const arr = ar.map(n =>{return n*2});// if u write () , then return is automatic , but if u make use of {} , then u must explicitly apply return 
+const arr = ar.map(n => n*2);// if u write () , then return is automatic , but if u make use of {} , then u must explicitly apply return 
 console.log(arr);
