@@ -1,0 +1,147 @@
+const test = {
+  "company": "TechNova Solutions",
+  "location": "Hyderabad",
+  "departments": [
+    {
+      "name": "Engineering",
+      "teams": [
+        {
+          "teamName": "Frontend",
+          "lead": { "name": "Akhil", "role": "Lead Developer", "salary": 95000 },// departments have 2 objects .. in that we have teams array , whihc have multiple objects , in 
+          //
+          "employees": [
+            {
+              "id": 1,
+              "name": "Arjun",
+              "role": "Developer",
+              "salary": 55000,
+              "skills": ["React", "JS", "CSS"],
+              "active": true
+            },
+            {
+              "id": 2,
+              "name": "Riya",
+              "role": "UI/UX Designer",
+              "salary": 48000,
+              "active": true
+            }
+          ]
+        },
+        {
+          "teamName": "Backend",
+          "lead": { "name": "Kavya", "role": "Senior Developer", "salary": 105000 },
+          "employees": [
+            {
+              "id": 3,
+              "name": "Manish",
+              "role": "Developer",
+              "salary": "70000", 
+              "active": true,
+              "projects": [
+                { "name": "Billing API", "status": "Active" },
+                { "name": "AI Engine", "status": "Completed" }
+              ]
+            },
+            {
+              "id": 4,
+              "name": "Sandeep",
+              "role": "Tester",
+              "salary": 45000,
+              "active": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Operations",
+      "teams": [
+        {
+          "teamName": "Support",
+          "employees": [
+            {
+              "id": 5,
+              "name": "Pooja",
+              "role": "Support Engineer",
+              "salary": 40000,
+              "shift": "Night"
+            }
+          ]
+        },
+        {
+          "teamName": "DevOps",
+          "employees": [
+            {
+              "id": 6,
+              "name": "Rahul",
+              "role": "Developer",
+              "salary": 82000,
+              "tools": ["Docker", "Kubernetes"]
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "totalTeams": 2,
+        "lastUpdated": "2025-01-13T10:30:00Z"
+      }
+    }
+  ],
+  "tags": ["tech", "employees", "internal-data"]
+}
+ 
+
+
+// console.log(test.departments[0].teams[0].employees[0].salary);
+
+
+// console.log(test.departments[0].teams[1].employees[0].salary);
+
+// console.log(test.departments[1].teams[1].employees[0].salary);
+
+const dept = test.departments 
+console.log(dept,"this is dept");
+let output = [];
+for(let i=0;i<dept.length;i++){
+    const tea = dept[i].teams;
+    // console.log(tea,"this is teams");
+    for(let j=0;j<tea.length;j++){
+        const emp = tea[j].employees;
+        // console.log(emp,"this is emp");
+        for(let k=0;k<emp.length;k++){
+            // console.log(emp[k].salary,"debug")
+            if(emp[k].role==="Developer"){
+                const finalobj = {
+                    ename:emp[k].name,
+                    old_sal:emp[k].salary,
+                    new_sal:emp[k].salary*1.10
+                }
+                output.push(finalobj);
+            }
+
+        }
+
+    }
+}
+console.log(output,"this is the answer");
+
+// let aja = dept[0].teams;
+// console.log(aja,"this");
+
+
+
+
+
+
+
+// for (let t in test){
+//     for(let d of test.departments){
+//         for(let te of test.departments[d].teams ){
+//             console.log(t.d.te.employees[0].salary);
+//         }
+//     }
+// }
+
+// for(let t=0;)
+
+
