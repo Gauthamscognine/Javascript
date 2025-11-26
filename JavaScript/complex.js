@@ -170,8 +170,8 @@ console.log("salaries above 65 using map and filter ",sal_6500);
 const mergeED = employees.map(e=>{
     return{
         ...e,
-        
         ...departments.find(d=>d.id ===e.id)
+        
     }
     
 })
@@ -217,7 +217,23 @@ console.log(count);
 const totalsal = salaries.reduce((acc,cur)=>{
     const total = acc+cur.salary
 },0)
-c
+
+
+
+
+
+
+
+const a = [1, 2,{name:"gautham"}];
+const b = [...a];   
+b[0] = 100;
+b[2].marks = 99;
+
+console.log(a); 
+console.log(b); 
+
+let arr = [1, 2, 3, [4, 5, 6], [7, 8, [9, 10, 11], 12], [13, 14, 15]]
+for(let i of arr) console.log(i);
 
 
 
@@ -235,42 +251,36 @@ c
 
 
 
+// const engdept = employees.find(e=>{
+//     const dep = departments.find(d=>d.id===e.id)
+//     return dep && dep.dept==="Engineering";
+// });
+// console.log("emp who have dept engineering",engdept);
 
+// const sal65 = employees.filter(e=>
+//     salaries.some(s=>s.id===e.id && s.salary>65000)).map(e=>e.name);
+// console.log("sal greater than 65 and only name ",sal65);
 
-
-
-
-
-const engdept = employees.find(e=>{
-    const dep = departments.find(d=>d.id===e.id)
-    return dep && dep.dept==="Engineering";
-});
-console.log("emp who have dept engineering",engdept);
-
-const sal65 = employees.filter(e=>
-    salaries.some(s=>s.id===e.id && s.salary>65000)).map(e=>e.name);
-console.log("sal greater than 65 and only name ",sal65);
-
-const ed= employees.map(e=>{
-    return{
-        ...e,
-        ...departments.find(d=>d.id===e.id),
-        ...salaries.find(s=>s.id===e.id)
-    }
+// const ed= employees.map(e=>{
+//     return{
+//         ...e,
+//         ...departments.find(d=>d.id===e.id),
+//         ...salaries.find(s=>s.id===e.id)
+//     }
     
-}) 
-console.log(ed);
+// }) 
+// console.log(ed);
 
-const maxsal= Math.max(...salaries.map(s=>s.salary)); 
-const high = employees.map(e=>{
-    return{
-        ...e,
-        ...salaries.find(s1=>s1.id===e.id && s1.salary===maxsal),
-        ...departments.find(d=>d.id===e.id)
-    }
-}).filter(obj=>obj.salary);
+// const maxsal= Math.max(...salaries.map(s=>s.salary)); 
+// const high = employees.map(e=>{
+//     return{
+//         ...e,
+//         ...salaries.find(s1=>s1.id===e.id && s1.salary===maxsal),
+//         ...departments.find(d=>d.id===e.id)
+//     }
+// }).filter(obj=>obj.salary);
 
-console.log("highest pay",high);
+// console.log("highest pay",high);
 
 
 

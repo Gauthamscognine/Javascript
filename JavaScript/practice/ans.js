@@ -7,7 +7,7 @@ const test = {
       "teams": [
         {
           "teamName": "Frontend",
-          "lead": { "name": "Akhil", "role": "Lead Developer", "salary": 95000 },// departments have 2 objects .. in that we have teams array , whihc have multiple objects , in 
+          "lead": { "name": "Akhil", "role": "Lead Developer", "salary": 95000 , "gender"},// departments have 2 objects .. in that we have teams array , whihc have multiple objects , in 
           //
           "employees": [
             {
@@ -93,14 +93,37 @@ const test = {
 
 
 // console.log(test.departments[0].teams[0].employees[0].salary);
-
-
 // console.log(test.departments[0].teams[1].employees[0].salary);
-
 // console.log(test.departments[1].teams[1].employees[0].salary);
 
-const dept = test.departments 
-console.log(dept,"this is dept");
+let res = [];
+const dept = test.departments;
+
+const team = dept.map(d => {
+  const tea = d.teams;
+
+  const teamemp = tea.map(t => {
+    const employees = t.employees;
+
+    // 1. Filter developers
+    const developers = employees.filter(e => e.role === "Developer");
+
+    // 2. Update salary (use map, NOT filter)
+    const updated = developers.map(e => ({
+      name:e.name,
+      role:e.role,
+      salary: Number(e.salary) * 1.10
+    }));
+    res.push(updated);
+  });
+
+});
+
+console.log(res);
+
+
+
+// console.log(dept,"this is dept");
 let output = [];
 for(let i=0;i<dept.length;i++){
     const tea = dept[i].teams;
@@ -125,8 +148,6 @@ for(let i=0;i<dept.length;i++){
 }
 console.log(output,"this is the answer");
 
-// let aja = dept[0].teams;
-// console.log(aja,"this");
 
 
 
@@ -134,14 +155,22 @@ console.log(output,"this is the answer");
 
 
 
-// for (let t in test){
-//     for(let d of test.departments){
-//         for(let te of test.departments[d].teams ){
-//             console.log(t.d.te.employees[0].salary);
-//         }
-//     }
-// }
 
-// for(let t=0;)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
