@@ -2,7 +2,7 @@ document.getElementById("abtn").addEventListener("click",()=>{
     const id = document.getElementById("addid").value;
     const name = document.getElementById("addname").value.trim();
     const marks = document.getElementById("addmarks").value;
-    fetch("http://localhost:2000/students",{
+    fetch("http://localhost:3000/students",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify({
@@ -19,7 +19,7 @@ document.getElementById("abtn").addEventListener("click",()=>{
 document.getElementById("dbtn").addEventListener("click",()=>{
     const id = document.getElementById("delid").value;
 
-    fetch(`http://localhost:2000/students/${id}`,{
+    fetch(`http://localhost:3000/students/${id}`,{
         method:"DELETE"
     })
 
@@ -34,7 +34,7 @@ document.getElementById("pbtn").addEventListener("click",()=>{
     const name = document.getElementById("putname").value.trim();
     const marks = document.getElementById("putmarks").value;
 
-    fetch(`http://localhost:2000/students/${id}`,{
+    fetch(`http://localhost:3000/students/${id}`,{
         method:"PUT",   
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({

@@ -14,8 +14,11 @@
       "id": 1,
       "name": "rishi",
       "marks": 3456
+    },
+    {
+      "id": 50,
+      "name": "khan",
+      "marks": 50
     }
   ]
-
-  
 }

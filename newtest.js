@@ -19,6 +19,7 @@ const test = {
             {
               "taskId": "T101",
               "taskName": "API Development",
+
               "status": "Completed",
               "startDate": "2023-01-12",
               "endDate": "2023-04-25",
@@ -153,78 +154,151 @@ const test = {
   }
 }
 
-//return employee name , project and task name;
 
-// Return an object with Group of Tasks per Status
-
-let output = {
-    
-}
-
-
-let statusName = [];
-
-
-
-
+let output = {};
 const emp = test.employees;
-for(let i=0;i<emp.length;i++){
-    // console.log(emp,"this is EMP")
 
+for (let i = 0; i < emp.length; i++) {
     const ename = emp[i].name;
     const project = emp[i].projects;
 
-    for(let j=0;j<project.length;j++){
-        // console.log(project,"This is PROJECTS");
+    for (let j = 0; j < project.length; j++) {
         const pname = project[j].projectName;
-        // console.log(pname)
         const task = project[j].tasks;
-        
 
-        for(let k=0;k<task.length;k++){
+        for (let k = 0; k < task.length; k++) {
             const taskName = task[k].taskName;
             let curstatus = task[k].status;
-            // console.log(curstatus,"this is statusssss");
-            if(statusName.includes(curstatus)){
-                const obj1 = {
-                    name:ename,
-                    projectName :pname,
-                    "taskName" : taskName
-                }
-                output[curstatus].push(obj1);
+           // checking if it a new status
+            if(!output[curstatus]){
+              output[curstatus] = [];
+            }
+
+            let exists = output[curstatus].find(e=>{
+              return e.name=== ename && e.projectName === pname;
+            })
+            if(exists){
+              exists.tasks.push(taskName);
+
             }
             else{
-                output[curstatus] = [];
-                statusName.push(curstatus);
-                const obj2 = {
-                    name:ename,
-                    projectName :pname,
-                    "taskName" : taskName
-                }
-                output[curstatus].push(obj2);
-
+              const obj = {
+                    name: ename,
+                    projectName: pname,
+                    tasks: [taskName]
+                };
+              output[curstatus].push(obj);
             }
-
-            // if(task[k].status==="Completed"){
-            //     const obj1 = {
-            //         name:ename,
-            //         projectName :pname,
-            //         "taskName" : taskName
-            //     }
-            //     output.completed.push(obj1);
-            // }
-            // else{
-            //      const obj2 = {
-            //         name:ename,
-            //         projectName :pname,
-            //         "taskName":taskName
-            //     }
-            //     output.active.push(obj2);
-
-            // }
-
+          
         }
-
     }
 }
-console.log(output);
+
+console.log(output.Completed[1].tasks);
+
+
+// let output = {
+// }
+// let statusName = [];
+// const emp = test.employees;
+// for(let i=0;i<emp.length;i++){
+//     // console.log(emp,"this is EMP")
+
+//     const ename = emp[i].name;
+//     const project = emp[i].projects;
+
+//     for(let j=0;j<project.length;j++){
+//         // console.log(project,"This is PROJECTS");
+//         const pname = project[j].projectName;
+//         // console.log(pname)
+
+//         const task = project[j].tasks;
+        
+
+//         for(let k=0;k<task.length;k++){
+//             const taskName = task[k].taskName;
+            
+//             let curstatus = task[k].status;
+//             // console.log(curstatus,"this is statusssss");
+//             if(statusName.includes(curstatus)){
+//                 const obj1 = {
+//                     name:ename,
+//                     projectName :pname,
+//                     "taskName" : taskName
+//                 }
+//                 output[curstatus].push(obj1);
+//             }
+//             else{
+//                 output[curstatus] = [];
+//                 statusName.push(curstatus);
+//                 const obj2 = {
+//                     name:ename,
+//                     projectName :pname,
+//                     "taskName" : taskName
+//                 }
+//                 output[curstatus].push(obj2);
+
+//             }
+//         }
+
+//     }
+// }
+// console.log(output);
+
+
+
+// const platformInfo = {
+//   Name: "StudyHub Academy",
+//   establishedYear: 2021,
+//   location: "Madhaput"
+// };
+
+// const student1 = {
+//   studentId: "101",
+//   name: "Arjun",
+//   course: "Full Stack Development",
+//   joinedDate: "2023-06-10",
+//   skills: ["HTML", "CSS", "JavaScript", "React"]
+// };
+// const course1 = {
+//   courseId: "C1",
+//   courseName: "Frontend Development",
+//   instructor: "Ramesh",
+//   startDate: "2023-06-15",
+//   endDate: "2023-09-30"
+// };
+// const module1 = {
+//   moduleId: "M1",
+//   moduleName: "HTML Basics",
+//   status: "Completed"
+// };
+// const lessons1 = [
+//   { lessonId: "L001", title: "Introduction to HTML", duration: "2 hours" },
+//   { lessonId: "L002", title: "Forms and Inputs", duration: "3 hours" }
+// ];
+// const module2 = {
+//   moduleId: "M2",
+//   moduleName: "CSS Styling",
+//   status: "In Progress"
+// };
+// const lessons2 = [
+//   { lessonId: "L003", title: "CSS Flexbox", duration: "2 hours" },
+//   { lessonId: "L004", title: "CSS Grid", duration: "2 hours" }
+// ];
+// const metaInfo = {
+//   generatedAt: "2025-02-10T11:30:00",
+//   totalStudents: 1
+// };
+
+
+// platformInfo.students ={};
+// platformInfo.students.student1 = student1;
+// platformInfo.students.student1.course1 = course1;
+// platformInfo.students.student1.course1.module1= module1;
+// platformInfo.students.student1.course1.module1.lesson1= lessons1;
+// platformInfo.students.student1.course1.module2= module2;
+// platformInfo.students.student1.course1.module2.lesson2= lessons2;
+// platformInfo.metaInfo = metaInfo;
+
+
+// console.log(platformInfo);

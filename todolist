@@ -5,5 +5,19 @@ http methods and client server architecutre .
 
 y is rest operator treating it has an array when we pass through a function 
 
-list of objects .
 
+url uniform resource locator
+http ; HTTP = HyperText Transfer Protocol
+
+202 ok 
+404 not founf When the requested resource does not exist.
+500 internal server error When the server crashes or fails.
+
+2 tier = deskptop app sql and queries 
+3 tier - application server in middle 
+n tier = multiple tier  load balancer api gateway , app servers , authentication 
+
+
+
+
+thread pool
