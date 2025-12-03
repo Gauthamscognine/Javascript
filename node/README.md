@@ -104,5 +104,156 @@ processor rwquires
 
 diffrent params in rest api . 
 
+diff between oarams . in path and query param sbth for get itself right , y both ? 
+
 
 -------------------------------------------------------------------------------------------------------------------------------------
+🔔 What are Webhooks?
+
+Webhooks are automatic API calls sent by one application to another when something happens.
+Instead of YOU requesting data again and again, the server pushes data to you instantl
+
+EVENT happens (payment, signup, order)
+
+SERVER triggers webhook  
+→ Sends POST request  
+→ To YOUR API endpoint  
+
+YOUR backend receives data  
+→ Processes it  
+→ Stores / replies OK
+
+Webhook = Server calling YOUR API when an event happens.
+
+------------------------------------------------------------------------------------------------------------------------------------
+✅ 1. REST API (Most common – Default choice)
+📌 What it is:
+
+Normal HTTP-based API using methods like GET, POST, PUT, DELETE.
+
+✅ When to use:
+
+CRUD apps (Create, Read, Update, Delete)
+
+Websites & mobile apps
+
+Dashboards
+
+Basic backend services
+
+✅ 2. GraphQL API (Frontend needs flexible data)
+📌 What it is:
+
+Client decides what data it wants.
+
+✅ When to use:
+
+Complex frontend queries
+
+Mobile optimization
+
+Single endpoint needs
+
+Data aggregation systems
+
+
+✅ 3. WebSocket API (Realtime communication)
+📌 What it is:
+
+Two-way persistent connection.
+
+✅ When to use:
+
+Live chat apps
+
+Multiplayer games
+
+Stock trading apps
+
+GPS tracking
+
+Online classrooms
+
+
+📌 What it is:
+
+Server calls YOUR API on events.
+
+✅ When to use:
+
+Payment confirmations
+
+Signup events
+
+Delivery tracking
+
+Email opened clicks
+
+Build triggers
+
+✅ Example:
+
+
+✅ 6. SOAP API (Legacy systems)
+📌 What it is:
+
+XML protocol-based API.
+
+✅ When to use:
+
+Banking systems
+
+Government systems
+
+Enterprise systems
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+set UV_THREADPOOL_SIZE=8
+node app.js,
+
+
+✅ What happens if you increase thread pool?
+✅ GOOD
+
+More parallel fs/crypto tasks
+
+Faster heavy upload/download
+
+Improves throughput
+
+❌ BAD
+
+Too many threads = context switching
+
+CPU overload
+
+RAM usage spikes
+
+Slower under load
+
+
+✅ What factors decide Thread Pool size?
+🔍 1. CPU Cores
+Good rule:
+thread pool ≤ CPU cores
+
+
+
+✅ 4. Experience-Based Limit (Not random)
+
+The Node.js team ran:
+
+Load tests
+
+Stress tests
+
+Enterprise benchmarks
+
+Cloud testing
+
+They observed:
+
+Past ~100 threads, performance worsens instead of improving
+
+So they fixed 128.
