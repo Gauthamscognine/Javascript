@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration</title>
+</head>
+<body>
+
+<input id="name" placeholder="Enter Name">
+<input id="email" placeholder="Enter Email">
+<button onclick="submitUser()">Register</button>
+
+<script>
+async function submitUser() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
+  const response = await fetch("/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email })
+  });
+
+  const result = await response.json();
+  alert(result.message);
+}
+</script>
+
+</body>
+</html>

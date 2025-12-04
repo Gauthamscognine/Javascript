@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 
 const filePath = path.join(__dirname,  "newtest.txt");
-console.log(__dirname);
+console.log(__dirname); 
 console.log(filePath);
 const data = await fs.readFile(filePath,"utf-8");
 console.log(data);

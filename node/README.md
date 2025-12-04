@@ -257,3 +257,8 @@ They observed:
 Past ~100 threads, performance worsens instead of improving
 
 So they fixed 128.
+
+// 
+
+when query like ifwe have many pages , then we cnt always give like /1/2 , better we go query , 
+in backend this thing helps us 
