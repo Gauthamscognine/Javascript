@@ -1,0 +1,41 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model employees {
+  id         Int          @id @default(autoincrement())
+  name       String?      @db.VarChar(100)
+  salary        Int?
+  email      String?      @db.VarChar(150)
+  deptid     Int?
+  roleid     Int?
+  attendance attendance[]
+  department departments? @relation(fields: [deptid], references: [deptid])
+  roles      roles?       @relation(fields: [roleid], references: [roleid], onDelete: NoAction, onUpdate: NoAction, map: "fk_employees_role")
+}
+
+model departments {
+  deptid      Int         @id @default(autoincrement())
+  name        String      @db.VarChar(100)
+  description String?     @db.VarChar(255)
+  employees   employees[]
+}
+
+model attendance {
+  attendanceid   Int       @id @default(autoincrement())
+  empid          Int
+  attendancedate DateTime  @db.Date
+  status         String    @db.VarChar(20)
+  employees      employees @relation(fields: [empid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_attendance_employee")
+}
+
+model roles {
+  roleid    Int         @id @default(autoincrement())
+  rolename  String      @db.VarChar(100)
+  employees employees[]
+}
