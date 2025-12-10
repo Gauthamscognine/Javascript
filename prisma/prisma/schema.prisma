@@ -7,10 +7,12 @@ datasource db {
   provider = "postgresql"
 }
 
-model employees {
+model Staff{
+  @@map("staff")
+
   id         Int          @id @default(autoincrement())
   name       String?      @db.VarChar(100)
-  salary        Int?
+  salary        Int?      @map("sal")
   email      String?      @db.VarChar(150)
   deptid     Int?
   roleid     Int?
@@ -23,7 +25,7 @@ model departments {
   deptid      Int         @id @default(autoincrement())
   name        String      @db.VarChar(100)
   description String?     @db.VarChar(255)
-  employees   employees[]
+  employees   Staff[]
 }
 
 model attendance {
@@ -31,11 +33,11 @@ model attendance {
   empid          Int
   attendancedate DateTime  @db.Date
   status         String    @db.VarChar(20)
-  employees      employees @relation(fields: [empid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_attendance_employee")
+  staff          Staff      @relation(fields: [empid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_attendance_employee")
 }
 
 model roles {
   roleid    Int         @id @default(autoincrement())
   rolename  String      @db.VarChar(100)
-  employees employees[]
+  employees Staff[]
 }

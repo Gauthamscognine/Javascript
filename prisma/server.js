@@ -6,8 +6,9 @@ const app = express();
 app.use(express.json());
 
 // Employee routes
-app.use("/emp", empRoutes);
+app.use("/staff", empRoutes);
 
-app.listen(3444, () => {
-  console.log("Server running on http://localhost:3444");
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
 });
+// console.log(Object.keys(prisma));
