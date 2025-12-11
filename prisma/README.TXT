@@ -66,3 +66,67 @@ include → JOIN
 data → INSERT / UPDATE
 findMany → SELECT *
 findUnique → SELECT with PK
+
+
+--------------------------------------------------
+Renaming tables
+Renaming column names
+Adding same table name, column name and field names and same constraints
+Adding tables into multiple schemas
+functions, stored procedures, triggers
+db migrations--sql server to postgres'
+
+
+
+
+
+
+
+
+
+
+
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Staff {
+  id         Int          @id(map: "staff_pkey") @default(autoincrement())
+  name       String?      @db.VarChar(100)
+  salary     Int?         @map("sal")
+  email      String?      @db.VarChar(150)
+  deptid     Int?
+  roleid     Int?
+  attendance attendance[]
+  roles      roles?       @relation(fields: [roleid], references: [roleid], onDelete: NoAction, onUpdate: NoAction, map: "fk_employees_role")
+  department departments? @relation(fields: [deptid], references: [deptid], map: "staff_deptid_fkey")
+
+  @@map("employees")
+}
+
+model departments {
+  deptid      Int     @id @default(autoincrement())
+  name        String  @db.VarChar(100)
+  description String? @db.VarChar(255)
+  employees   Staff[]
+}
+
+model attendance {
+  attendanceid   Int      @id @default(autoincrement())
+  empid          Int
+  attendancedate DateTime @db.Date
+  status         String   @db.VarChar(20)
+  staff          Staff    @relation(fields: [empid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_attendance_employee")
+}
+
+model roles {
+  roleid    Int     @id @default(autoincrement())
+  rolename  String  @db.VarChar(100)
+  employees Staff[]
+}

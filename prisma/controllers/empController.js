@@ -3,19 +3,21 @@ import prisma from "../PrismaClient.js";
 /* ============================
    GET all employees
 ============================ */
-console.log("✅ empController loaded");
+// console.log("✅ empController loaded");
 
 //console.log("PRISMA KEYS:", Object.keys(prisma));
+
+
 export const getAllEmployees = async (req, res) => {
-  console.log("PRISMA KEYS:", Object.keys(prisma));
+  // console.log("PRISMA KEYS:", Object.keys(prisma));
 
   try {
     const result = await prisma.staff.findMany({
-      // include: {
-      //   department: true,
-      //   roles: true,
-      //   attendance: true,
-      // },
+      include: {
+        department: true,
+        roles: true,
+        // attendance: true,
+      },
     });
     res.json(result);
   } catch (error) {
@@ -23,6 +25,62 @@ export const getAllEmployees = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+
+
+
+
+export const getEmployeeByIdcount = async(req,res)=>{
+  const result = await prisma.departments.findMany({
+    where :{deptid:1},
+    include:{
+      employees:true,
+    },
+  })
+
+  let count = 0;
+  const emp = result.employees;
+  for(let i in emp){
+    console.log(i);
+    count++;
+  }
+  res.send(count);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ============================
    GET employee by id

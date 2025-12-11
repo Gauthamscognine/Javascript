@@ -5,39 +5,69 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-}
-
-model Staff{
-  @@map("staff")
-
-  id         Int          @id @default(autoincrement())
-  name       String?      @db.VarChar(100)
-  salary        Int?      @map("sal")
-  email      String?      @db.VarChar(150)
-  deptid     Int?
-  roleid     Int?
-  attendance attendance[]
-  department departments? @relation(fields: [deptid], references: [deptid])
-  roles      roles?       @relation(fields: [roleid], references: [roleid], onDelete: NoAction, onUpdate: NoAction, map: "fk_employees_role")
+  schemas  = ["public", "training"]
 }
 
 model departments {
-  deptid      Int         @id @default(autoincrement())
-  name        String      @db.VarChar(100)
-  description String?     @db.VarChar(255)
-  employees   Staff[]
+  deptid      Int     @id @default(autoincrement())
+  name        String  @db.VarChar(100)
+  description String? @db.VarChar(255)
+  staff       staff[]
+
+  @@schema("public")
 }
 
 model attendance {
-  attendanceid   Int       @id @default(autoincrement())
+  attendanceid   Int      @id @default(autoincrement())
   empid          Int
-  attendancedate DateTime  @db.Date
-  status         String    @db.VarChar(20)
-  staff          Staff      @relation(fields: [empid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_attendance_employee")
+  attendancedate DateTime @db.Date
+  status         String   @db.VarChar(20)
+  staff          staff    @relation(fields: [empid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_attendance_employee")
+
+  @@schema("public")
 }
 
 model roles {
-  roleid    Int         @id @default(autoincrement())
-  rolename  String      @db.VarChar(100)
-  employees Staff[]
+  roleid   Int     @id @default(autoincrement())
+  rolename String  @db.VarChar(100)
+  staff    staff[]
+
+  @@schema("public")
+}
+
+model course_enrollments {
+  enrollment_id Int     @id @default(autoincrement())
+  employee_id   Int
+  course_id     Int
+  status        String? @default("ongoing") @db.VarChar(50)
+  score         Int?
+  courses       courses @relation(fields: [course_id], references: [course_id], onDelete: NoAction, onUpdate: NoAction)
+  staff         staff   @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("training")
+}
+
+model courses {
+  course_id          Int                  @id @default(autoincrement())
+  course_name        String               @db.VarChar(100)
+  duration_hours     Int?
+  course_enrollments course_enrollments[]
+
+  @@schema("training")
+}
+
+model staff {
+  id                 Int                  @id @default(autoincrement())
+  name               String?              @db.VarChar(100)
+  sal                Int?
+  email              String?              @db.VarChar(150)
+  deptid             Int?
+  roleid             Int?
+  attendance         attendance[]
+  roles              roles?               @relation(fields: [roleid], references: [roleid], onDelete: NoAction, onUpdate: NoAction, map: "fk_employees_role")
+  departments        departments?         @relation(fields: [deptid], references: [deptid])
+  course_enrollments course_enrollments[]
+
+  @@map("staff")
+  @@schema("public")
 }
