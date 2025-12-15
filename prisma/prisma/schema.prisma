@@ -12,7 +12,7 @@ model departments {
   deptid      Int     @id @default(autoincrement())
   name        String  @db.VarChar(100)
   description String? @db.VarChar(255)
-  staff       staff[]
+  staff         staff[]
 
   @@schema("public")
 }
@@ -22,52 +22,29 @@ model attendance {
   empid          Int
   attendancedate DateTime @db.Date
   status         String   @db.VarChar(20)
-  staff          staff    @relation(fields: [empid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_attendance_employee")
+  staff          staff     @relation(fields: [empid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_attendance_employee")
 
   @@schema("public")
 }
 
 model roles {
-  roleid   Int     @id @default(autoincrement())
-  rolename String  @db.VarChar(100)
-  staff    staff[]
+  roleid   Int    @id @default(autoincrement())
+  rolename String @db.VarChar(100)
+  staff      staff[]
 
   @@schema("public")
 }
 
-model course_enrollments {
-  enrollment_id Int     @id @default(autoincrement())
-  employee_id   Int
-  course_id     Int
-  status        String? @default("ongoing") @db.VarChar(50)
-  score         Int?
-  courses       courses @relation(fields: [course_id], references: [course_id], onDelete: NoAction, onUpdate: NoAction)
-  staff         staff   @relation(fields: [employee_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@schema("training")
-}
-
-model courses {
-  course_id          Int                  @id @default(autoincrement())
-  course_name        String               @db.VarChar(100)
-  duration_hours     Int?
-  course_enrollments course_enrollments[]
-
-  @@schema("training")
-}
-
 model staff {
-  id                 Int                  @id @default(autoincrement())
-  name               String?              @db.VarChar(100)
-  sal                Int?
-  email              String?              @db.VarChar(150)
-  deptid             Int?
-  roleid             Int?
-  attendance         attendance[]
-  roles              roles?               @relation(fields: [roleid], references: [roleid], onDelete: NoAction, onUpdate: NoAction, map: "fk_employees_role")
-  departments        departments?         @relation(fields: [deptid], references: [deptid])
-  course_enrollments course_enrollments[]
-
-  @@map("staff")
+  id          Int          @id(map: "staff_pkey") @default(autoincrement())
+  name        String?      @db.VarChar(100)
+  sal         Int?
+  email       String?      @db.VarChar(150)
+  deptid      Int?
+  roleid      Int?
+  attendance  attendance[]
+  roles       roles?       @relation(fields: [roleid], references: [roleid], onDelete: NoAction, onUpdate: NoAction, map: "fk_employees_role")
+  departments departments? @relation(fields: [deptid], references: [deptid], map: "staff_deptid_fkey")
+  @@map("emp")
   @@schema("public")
 }

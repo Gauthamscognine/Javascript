@@ -1,18 +1,19 @@
 import express from "express";
 import {
   getAllEmployees,
-  // getEmployeeById,
   createEmployee,
   updateEmployee,
   patchEmployee,
   deleteEmployee,
-  getEmployeeByIdcount
+  // getEmployeeById,
+  dept_empCount
 } from "../controllers/empController.js";
 
 const router = express.Router();
 
-router.get("/", getEmployeeByIdcount);
-// router.get("/:id", getEmployeeByIdcount);
+router.get("/:id",dept_empCount);
+router.get("/", getAllEmployees);
+// router.get("/:id", getEmployeeById);
 router.post("/", createEmployee);
 router.put("/:id", updateEmployee);
 router.patch("/:id", patchEmployee);

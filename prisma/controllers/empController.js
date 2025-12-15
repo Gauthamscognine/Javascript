@@ -9,17 +9,42 @@ import prisma from "../PrismaClient.js";
 
 
 export const getAllEmployees = async (req, res) => {
-  // console.log("PRISMA KEYS:", Object.keys(prisma));
+  const limit = Number(req.query.limit)|| 5;
+  const  page= Number(req.query.page) || 1;
+
+  const skip = (page-1)*limit;
 
   try {
     const result = await prisma.staff.findMany({
-      include: {
-        department: true,
-        roles: true,
-        // attendance: true,
-      },
+      skip,
+      take:limit,
+      where:{
+        departments:{
+          name:"Eng"
+        },
+        sal:{
+          gte:30000,
+          lte:60000
+        },
+        roles:{
+          rolename:"Role 2"
+        }
+
+    },
+    orderBy:{
+      sal:"desc"
+    },
+
+    include:{
+      departments:true,
+      roles:true
+    }
     });
-    res.json(result);
+     res.json({
+      // page,
+      // limit,
+      data: result
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
@@ -30,22 +55,16 @@ export const getAllEmployees = async (req, res) => {
 
 
 
-
-export const getEmployeeByIdcount = async(req,res)=>{
-  const result = await prisma.departments.findMany({
-    where :{deptid:1},
-    include:{
-      employees:true,
+export const dept_empCount = async(req,res)=>{
+  const deptid = Number(req.params.id);
+  const result = await prisma.staff.aggregate({
+    where:{deptid},
+    _avg:{
+      sal:true
     },
-  })
-
-  let count = 0;
-  const emp = result.employees;
-  for(let i in emp){
-    console.log(i);
-    count++;
-  }
-  res.send(count);
+    
+  });
+  res.send(result);
 };
 
 
@@ -57,6 +76,10 @@ export const getEmployeeByIdcount = async(req,res)=>{
 
 
 
+
+
+// json from the db only . 
+//shadow databse and how it works .
 
 
 
@@ -116,13 +139,13 @@ export const getEmployeeById = async (req, res) => {
    CREATE employee
 ============================ */
 export const createEmployee = async (req, res) => {
-  const { name, salary, email, deptid, roleid } = req.body;
+  const { name, sal, email, deptid, roleid } = req.body;
 
   try {
     const newEmp = await prisma.staff.create({
       data: {
         name,
-        salary: salary !== undefined ? Number(salary) : null,
+        sal: sal !== undefined ? Number(sal) : null,
         email,
         deptid: deptid !== undefined ? Number(deptid) : null,
         roleid: roleid !== undefined ? Number(roleid) : null,
@@ -141,7 +164,7 @@ export const createEmployee = async (req, res) => {
 ============================ */
 export const updateEmployee = async (req, res) => {
   const id = Number(req.params.id);
-  const { name, salary, email, deptid, roleid } = req.body;
+  const { name, sal, email, deptid, roleid } = req.body;
 
   if (isNaN(id)) {
     return res.status(400).json({ message: "Invalid employee id" });
@@ -160,7 +183,7 @@ export const updateEmployee = async (req, res) => {
       where: { id },
       data: {
         name,
-        salary: salary !== undefined ? Number(salary) : existingEmp.salary,
+        sal: sal !== undefined ? Number(sal) : existingEmp.sal,
         email,
         deptid: deptid !== undefined ? Number(deptid) : existingEmp.deptid,
         roleid: roleid !== undefined ? Number(roleid) : existingEmp.roleid,
@@ -183,11 +206,11 @@ export const patchEmployee = async (req, res) => {
     return res.status(400).json({ message: "Invalid employee id" });
   }
 
-  const { name, salary, email, deptid, roleid } = req.body;
+  const { name, sal, email, deptid, roleid } = req.body;
   const updateData = {};
 
   if (name !== undefined) updateData.name = name;
-  if (salary !== undefined) updateData.salary = Number(salary);
+  if (sal !== undefined) updateData.sal = Number(sal);
   if (email !== undefined) updateData.email = email;
   if (deptid !== undefined) updateData.deptid = Number(deptid);
   if (roleid !== undefined) updateData.roleid = Number(roleid);
