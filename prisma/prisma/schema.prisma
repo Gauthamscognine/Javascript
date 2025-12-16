@@ -39,7 +39,8 @@ model staff {
   id          Int          @id(map: "staff_pkey") @default(autoincrement())
   name        String?      @db.VarChar(100)
   sal         Int?
-  email       String?      @db.VarChar(150)
+  email       String?      @unique @db.VarChar(150)
+  password    String?
   deptid      Int?
   roleid      Int?
   attendance  attendance[]

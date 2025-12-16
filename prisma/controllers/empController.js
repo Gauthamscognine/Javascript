@@ -1,11 +1,5 @@
 import prisma from "../PrismaClient.js";
 
-/* ============================
-   GET all employees
-============================ */
-// console.log("✅ empController loaded");
-
-//console.log("PRISMA KEYS:", Object.keys(prisma));
 
 
 export const getAllEmployees = async (req, res) => {
@@ -16,29 +10,6 @@ export const getAllEmployees = async (req, res) => {
 
   try {
     const result = await prisma.staff.findMany({
-      skip,
-      take:limit,
-      where:{
-        departments:{
-          name:"Eng"
-        },
-        sal:{
-          gte:30000,
-          lte:60000
-        },
-        roles:{
-          rolename:"Role 2"
-        }
-
-    },
-    orderBy:{
-      sal:"desc"
-    },
-
-    include:{
-      departments:true,
-      roles:true
-    }
     });
      res.json({
       // page,
@@ -50,7 +21,6 @@ export const getAllEmployees = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 
 
@@ -69,38 +39,8 @@ export const dept_empCount = async(req,res)=>{
 
 
 
-
-
-
-
-
-
-
-
-
 // json from the db only . 
 //shadow databse and how it works .
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

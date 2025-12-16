@@ -130,3 +130,12 @@ model roles {
   rolename  String  @db.VarChar(100)
   employees Staff[]
 }
+
+
+
+
+// google and microsoft authentication and jwt also in authorization . 
+csrf tokens , and how tot implement them ...
+what are refrest tokens 
+can dotenv also load another files too 
+how to handle multiple databses in prisma 
