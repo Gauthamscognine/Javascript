@@ -41,8 +41,11 @@ model staff {
   sal         Int?
   email       String?      @unique @db.VarChar(150)
   password    String?
+  refrestToken String?
   deptid      Int?
   roleid      Int?
+  providerId String?     @unique
+  authProvider String?    @default("LOCAL")
   attendance  attendance[]
   roles       roles?       @relation(fields: [roleid], references: [roleid], onDelete: NoAction, onUpdate: NoAction, map: "fk_employees_role")
   departments departments? @relation(fields: [deptid], references: [deptid], map: "staff_deptid_fkey")

@@ -70,14 +70,83 @@ export const login = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
+    const accessToken = jwt.sign(
+      {userId:user.id},
+      process.env.ACCESS_TOKEN_SECRET,
+      {expiresIn: process.env.ACCESS_EXPIRES}
+    );
+
+    const refereshToken = jwt.sign(
+      {userId:user.id},
+      process.env.REFERESH_TOKEN_SECRET,
+      {expiresIn: process.env.REFERESH_EXPIRES}
+    );
+
+    await prisma.staff.update({
+      where:{id:user.id},
+      data:{
+        refrestToken:refereshToken
+      }
+    });
+
+
     res.json({
       message: "Login successful",
-      token
+      accessToken,
+      refereshToken
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+
+
+export const refreshAccessToken = async (req, res) => {
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return res.status(401).json({ message: "Refresh token missing" });
+  }
+
+  try {
+    const decoded = jwt.verify(
+      refreshToken,
+      process.env.REFERESH_TOKEN
+    );
+
+    const user = await prisma.staff.findUnique({
+      where: { id: decoded.userId }
+    });
+
+    if (!user || user.refreshToken !== refreshToken) {
+      return res.status(403).json({ message: "Invalid refresh token" });
+    }
+
+    const newAccessToken = jwt.sign(
+      { userId: user.id },
+      process.env.ACCESS_TOKEN,
+      { expiresIn: process.env.ACCESS_EXPIRES }
+    );
+
+    res.json({ accessToken: newAccessToken });
+
+  } catch (error) {
+    return res.status(403).json({ message: "Refresh token expired" });
+  }
+};
+
+
+export const logout = async (req, res) => {
+  await prisma.staff.update({
+    where: { id: req.user.userId },
+    data: { refrestToken: null }
+  });
+
+  res.json({ message: "Logged out successfully" });
+};
+
 
 
 

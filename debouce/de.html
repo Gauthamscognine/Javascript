@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Debounce Demo</title>
+</head>
+<body>
+
+  <h2>Debounce using Button</h2>
+  <button id="btn">Click me fast</button>
+
+  <script>
+    // Debounce function
+    function debounce(fn, t) {
+      let i;
+
+      return function (...args) {
+        console.log("Button clicked → clearing old timer");
+
+        clearTimeout(i);
+
+        i = setTimeout(() => {
+          fn(...args);
+        }, t);
+      };
+    }
+
+    // Function to be debounced
+    function handleClick() {
+      console.log(
+        "✅ Debounced function executed at:",
+        new Date().toLocaleTimeString()
+      );
+    }
+
+    // Create debounced version
+    const debouncedClick = debounce(handleClick, 10000);
+
+    // Button event
+    document.getElementById("btn").addEventListener("click", () => {
+      console.log("🔴 click event fired at:", new Date().toLocaleTimeString());
+      debouncedClick();
+    });
+  </script>
+
+</body>
+</html>

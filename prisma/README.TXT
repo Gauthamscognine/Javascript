@@ -136,6 +136,6 @@ model roles {
 
 // google and microsoft authentication and jwt also in authorization . 
 csrf tokens , and how tot implement them ...
-what are refrest tokens 
-can dotenv also load another files too 
+what are refrest tokens  and access tokens 
+
 how to handle multiple databses in prisma 
