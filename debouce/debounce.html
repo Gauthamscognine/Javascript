@@ -1,0 +1,85 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id = "btn">click</button>
+  <script>
+    function debounce(fn,delay){
+      let i;
+      return function(){
+        clearTimeout(i);
+        i = setTimeout(()=>{fn()} , delay)
+      }
+    };
+
+    function handlaction(){
+      console.log("this is debounc code ");
+    }
+
+    const handledebounce = debounce(handlaction,500);
+
+    document.getElementById("btn").addEventListener("click",()=>{
+      console.log("button clicked");
+      handledebounce();
+    })
+  </script>
+  
+</body>
+</html>
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id = "btn">click</button>
+  <script>
+    
+    
+    function debounce(fn,delay){
+      let i;
+      allowed = true;
+
+      
+      return function(...args){
+        if(!allowed) return;
+
+        allowed = false;
+
+        setTimeout(()=>{fn(...args);allowed = true;}, delay)
+        
+    };
+  }
+
+    function handlaction(value){
+      console.log("this is debounc code and the value is " + value);
+    }
+
+    const handledebounce = debounce(handlaction,500);
+    let count = 0;
+    document.getElementById("btn").addEventListener("click",()=>{
+      console.log("button clicked");
+      count++;
+      handledebounce(count);
+    })
+  </script>
+  
+</body>
+</html> -->
+
+
+
+
+
+

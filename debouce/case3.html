@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Throttle – Execute Immediately</title>
+</head>
+<body>
+
+  <button id="btn">Click fast </button>
+
+  <script>
+    // THROTTLE (leading)
+    function throttle(fn, delay) {
+      let isAllowed = true;
+
+      return function (...args) {
+        if (!isAllowed) {
+          console.log("❌ Ignored (during delay)");
+          return;
+        }
+
+        // Execute immediately
+        fn(...args);
+
+        // Block further calls
+        isAllowed = false;
+
+        // Unlock after delay
+        setTimeout(() => {
+          isAllowed = true;
+          console.log("🟢 Ready for next input");
+        }, delay);
+      };
+    }
+
+    function handleAction(value) {
+      console.log(
+        "✅ Executed value:",
+        value,
+        "Time:",
+        new Date().toLocaleTimeString()
+      );
+    }
+
+    let count = 0;
+
+    const throttledHandler = throttle(handleAction, 2000);
+
+    document.getElementById("btn").addEventListener("click", () => {
+      count++;
+      console.log("🔴 Click:", count);
+      throttledHandler(count);
+    });
+  </script>
+
+</body>
+</html>

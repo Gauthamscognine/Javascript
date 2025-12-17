@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+
+  <button id="btn">Click </button>
+
+  <script>
+
+    function debounce(fn,delay){
+      let i;
+      let allowed  = true;
+
+      return function(){
+        if(!allowed) return;
+
+        fn();
+
+        allowed = false;
+
+        setTimeout(() => {
+            allowed = true;
+        }, delay);
+
+      }
+    }
+
+    function handleaction(){
+      console.log("this is throttling")
+    }
+
+    const callhandler = debounce(handleaction , 500)
+    document.getElementById("btn").addEventListener("click", () => {
+      console.log("Button clicked:");
+      callhandler();
+      
+    });
+  </script>
+
+</body>
+</html>

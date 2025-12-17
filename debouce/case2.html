@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+
+  <button id="btn">Click fast (like typing)</button>
+
+  <script>
+    function debounce(fn, delay) {
+      let isLocked = false;   // prevents new calls
+    //   let timerId = null;
+
+      return function (...args) {
+        // If locked, ignore all calls
+        if (isLocked) {
+          console.log("❌ Ignored (during delay)");
+          return;
+        }
+
+        console.log("🟢 First keystroke captured");
+
+        isLocked = true;
+
+        timerId = setTimeout(() => {
+          fn(...args);        // execute ONLY first call
+          isLocked = false;   // unlock after execution
+        }, delay);
+      };
+    }
+
+    function handleAction(value) {
+      console.log(
+        "✅ Executed FIRST keystroke value:",
+        value,
+        "Time:",
+        new Date().toLocaleTimeString()
+      );
+    }
+
+    let count = 0;
+
+    const firstOnlyHandler = debounce(handleAction, 500);
+
+    document.getElementById("btn").addEventListener("click", () => {
+      count++;
+      console.log("🔴 Click:", count);
+      firstOnlyHandler(count);
+    });
+  </script>
+
+</body>
+</html>
