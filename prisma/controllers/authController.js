@@ -65,7 +65,7 @@ export const login = async (req, res) => {
     }
 
     const token = jwt.sign(// used to create an jwt token , contins paylod , secret and options 
-      { userId: user.id, email: user.email },
+      { userId: user.id, email: user.email , roleid:user.roleid},
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
@@ -92,6 +92,7 @@ export const login = async (req, res) => {
 
     res.json({
       message: "Login successful",
+      token,
       accessToken,
       refereshToken
     });

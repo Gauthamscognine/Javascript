@@ -139,3 +139,19 @@ csrf tokens , and how tot implement them ...
 what are refrest tokens  and access tokens 
 
 how to handle multiple databses in prisma 
+
+
+
+debouce in lift ,after a particular time itself it closes and thne if someone comes , it resets the counter timer 
+
+
+throttle for car rain  wipers , after a specific intervl of time ,it wipes 
+
+
+debouce in cash payments 
+
+
+automatic saving of exams of google maps , it keeps updating in some time  , this is THROTTLE
+
+
+stock market - THROTTLE 

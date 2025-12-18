@@ -3,12 +3,12 @@ import qs from "qs";
 import jwt from "jsonwebtoken";
 import prisma from "../PrismaClient.js";
 
-// 1️⃣ Redirect user to Google
+// 1️⃣ Redirect user to Google //auth/google
 export const googleLogin = (req, res) => {
   const redirectUrl =
     "https://accounts.google.com/o/oauth2/v2/auth" +
     `?client_id=${process.env.GOOGLE_CLIENT_ID}` +// clinet id that he bleonsto u r app
-    `&redirect_uri=${process.env.GOOGLE_REDIRECT_URI}` +// after finish login come back to this url
+    `&redirect_uri=${process.env.GOOGLE_REDIRECT_URI}` +// after finish login come back to this url/callback
     `&response_type=code` +// temporary authorixation
     `&scope=openid email profile`;// this si requested from google 
 
@@ -16,7 +16,7 @@ export const googleLogin = (req, res) => {
 };
 
 // 2️⃣ Google redirects back here
-export const googleCallback = async (req, res) => {
+export const googleCallback = async (req, res) => {///auth./google/callback
   try {
     const { code } = req.query;
 
@@ -73,7 +73,7 @@ export const googleCallback = async (req, res) => {
 
     // 6️⃣ Issue YOUR access token
     const accessToken = jwt.sign(
-      { userId: user.id },
+      { userId: user.id , roleid:user.roleid },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: process.env.ACCESS_EXPIRES }
     );
