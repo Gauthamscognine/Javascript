@@ -10,8 +10,10 @@ import {
   // getEmployeeById,
   dept_empCount
 } from "../controllers/empController.js";
+import { csrfProtection } from "../middlewares/csurf.js";
 
 import {authenticate,authorizeRole } from "../middlewares/authentication.js"
+
 const router = express.Router();
 
 
@@ -40,7 +42,8 @@ const router = express.Router();
 
 
 router.get("/:id",dept_empCount);
-router.get("/",authenticate,authorizeRole([2]), getAllEmployees);
+// router.get("/",authenticate,authorizeRole([2]), getAllEmployees);
+router.get("/", csrfProtection,getAllEmployees);
 // router.get("/:id", getEmployeeById);
 router.post("/", createEmployee);
 router.put("/:id", updateEmployee);

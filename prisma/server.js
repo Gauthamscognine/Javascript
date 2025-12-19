@@ -1,11 +1,15 @@
 import express from "express";
 import empRoutes from "./routes/empRoutes.js";
 import authRoutes from "./routes/authRoutes.js"
+import cookieParser from "cookie-parser";
+import csurf from "csurf";
 import "dotenv/config";
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
+
 
 // Employee routes
 app.use("/auth",authRoutes);

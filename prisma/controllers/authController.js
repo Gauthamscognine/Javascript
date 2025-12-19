@@ -148,6 +148,11 @@ export const logout = async (req, res) => {
   res.json({ message: "Logged out successfully" });
 };
 
+export const getCsrfToken = (req, res) => {
+  res.json({ csrfToken: req.csrfToken() });
+};
+
+
 
 
 
