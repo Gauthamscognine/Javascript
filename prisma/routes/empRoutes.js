@@ -42,8 +42,8 @@ const router = express.Router();
 
 
 router.get("/:id",dept_empCount);
-// router.get("/",authenticate,authorizeRole([2]), getAllEmployees);
-router.get("/", csrfProtection,getAllEmployees);
+router.get("/",authenticate,authorizeRole([2]), getAllEmployees);
+// router.get("/", csrfProtection,getAllEmployees);
 // router.get("/:id", getEmployeeById);
 router.post("/", createEmployee);
 router.put("/:id", updateEmployee);

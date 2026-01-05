@@ -77,7 +77,7 @@ export const login = async (req, res) => {
     );
 
     const refereshToken = jwt.sign(
-      {userId:user.id},
+      {userId:user.id , roleid:user.roleid},
       process.env.REFERESH_TOKEN_SECRET,
       {expiresIn: process.env.REFERESH_EXPIRES}
     );

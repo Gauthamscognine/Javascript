@@ -1,20 +1,6 @@
 
 import jwt from "jsonwebtoken"
 
-// export const  authenticate = (req, res, next) => {
-//   const token = req.headers.authorization?.split(" ")[1]  || req.query.token;;
-
-//   if (!token) {
-//     return res.status(401).json({ message: "Token missing" });
-//   }
-//   try {
-//     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-//     req.user = decoded; // userId, email available here
-//     next();
-//   } catch (error) {
-//     return res.status(401).json({ message: "Invalid token" });
-//   }
-// };
 
 // export const authenticate = (req, res, next) => {
 //   const authHeader = req.headers.authorization;
@@ -59,7 +45,7 @@ export const authenticate = (req, res, next) => {
 
   // 4️⃣ Verify token
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.REFERESH_TOKEN_SECRET);
     req.user = decoded; // { userId, roleid, email, ... }
     next();
   } catch (error) {
@@ -94,3 +80,7 @@ export const   authorizeRole = (allowedRoles = []) => {
 // Validation with Joi/Zod
 
 
+
+// follow - come after 
+// bif larfe - enormous 
+// clarity - vivet 

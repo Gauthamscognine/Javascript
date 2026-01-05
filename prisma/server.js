@@ -19,4 +19,4 @@ app.use("/staff", empRoutes);
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
-// console.log(Object.keys(prisma));
+

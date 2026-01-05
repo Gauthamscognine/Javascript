@@ -6,7 +6,7 @@ import prisma from "../PrismaClient.js";
 // 1️⃣ Redirect user to Google //auth/google
 export const googleLogin = (req, res) => {
   const redirectUrl =
-    "https://accounts.google.com/o/oauth2/v2/auth" +
+    "https://accounts.google.com/o/oauth2/v2/auth" + //Google’s OAuth authorization endpoint.
     `?client_id=${process.env.GOOGLE_CLIENT_ID}` +// clinet id that he bleonsto u r app
     `&redirect_uri=${process.env.GOOGLE_REDIRECT_URI}` +// after finish login come back to this url/callback
     `&response_type=code` +// temporary authorixation
@@ -16,7 +16,7 @@ export const googleLogin = (req, res) => {
 };
 
 // 2️⃣ Google redirects back here
-export const googleCallback = async (req, res) => {///auth./google/callback
+export const googleCallback = async (req, res) => {///auth./google/callback?code = dkmfkf , this is what google sends us 
   try {
     const { code } = req.query;
 
@@ -79,7 +79,7 @@ export const googleCallback = async (req, res) => {///auth./google/callback
     );
 
     const refreshToken = jwt.sign(
-      { userId: user.id },
+      { userId: user.id  , roleid:user.roleid},
       process.env.REFERESH_TOKEN_SECRET,
       { expiresIn: process.env.REFERESH_EXPIRES }
     );
@@ -92,7 +92,7 @@ export const googleCallback = async (req, res) => {///auth./google/callback
 
     // 8️⃣ Redirect to frontend with token
     res.redirect(
-      `http://localhost:3000/staff?token=${accessToken}`
+      `http://localhost:3000/staff?token=${refreshToken}`
     );
 
   } catch (error) {
