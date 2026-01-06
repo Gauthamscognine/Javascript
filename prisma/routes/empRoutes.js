@@ -1,5 +1,6 @@
 import express from "express";
-import jwt from "jsonwebtoken";
+import asyncHandler from "../middlewares/asyncHandler.js";
+import empErrorHandler from "../middlewares/empErrorHandler.js";
 
 import {
   getAllEmployees,
@@ -12,44 +13,21 @@ import {
 } from "../controllers/empController.js";
 import { csrfProtection } from "../middlewares/csurf.js";
 
-import {authenticate,authorizeRole } from "../middlewares/authentication.js"
 
 const router = express.Router();
 
-
-
-
-
-// const authenticate = (req, res, next) => {
-//   const token = req.headers.authorization?.split(" ")[1]  || req.query.token;;
-
-//   if (!token) {
-//     return res.status(401).json({ message: "Token missing" });
-//   }
-//   try {
-//     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-//     req.user = decoded; // userId, email available here
-//     next();
-//   } catch (error) {
-//     return res.status(401).json({ message: "Invalid token" });
-//   }
-// };
-
-
-
-
-
-
-
 router.get("/:id",dept_empCount);
-router.get("/",authenticate,authorizeRole([2]), getAllEmployees);
+router.get("/", asyncHandler(getAllEmployees));
+// router.get("/",authenticate,authorizeRole([2]), getAllEmployees);
+// router.get("/",getAllEmployees);
 // router.get("/", csrfProtection,getAllEmployees);
 // router.get("/:id", getEmployeeById);
-router.post("/", createEmployee);
-router.put("/:id", updateEmployee);
-router.patch("/:id", patchEmployee);
-router.delete("/:id", deleteEmployee);
+router.post("/", asyncHandler(createEmployee));
+router.put("/:id",asyncHandler( updateEmployee));
+router.patch("/:id", asyncHandler(patchEmployee));
+router.delete("/:id", asyncHandler(deleteEmployee));
 
+router.use(empErrorHandler);
 
 
 export default router;

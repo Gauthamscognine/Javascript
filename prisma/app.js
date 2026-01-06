@@ -4,21 +4,18 @@ import authRoutes from "./routes/authRoutes.js"
 import cookieParser from "cookie-parser";
 import csurf from "csurf";
 import "dotenv/config";
-
-// import app from "./app.js"
-
-
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 
-
 app.use("/auth",authRoutes);
 app.use("/staff", empRoutes);
 
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
-});
+// // optional health check
+// app.get("/health", (req, res) => {
+//   res.json({ status: "ok" });
+// });
 
+export default app;

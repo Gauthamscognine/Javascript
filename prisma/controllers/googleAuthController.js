@@ -3,7 +3,7 @@ import qs from "qs";
 import jwt from "jsonwebtoken";
 import prisma from "../PrismaClient.js";
 
-// 1️⃣ Redirect user to Google //auth/google
+//  Redirect user to Google //auth/google
 export const googleLogin = (req, res) => {
   const redirectUrl =
     "https://accounts.google.com/o/oauth2/v2/auth" + //Google’s OAuth authorization endpoint.
@@ -15,7 +15,7 @@ export const googleLogin = (req, res) => {
   res.redirect(redirectUrl);
 };
 
-// 2️⃣ Google redirects back here
+//  Google redirects back here
 export const googleCallback = async (req, res) => {///auth./google/callback?code = dkmfkf , this is what google sends us 
   try {
     const { code } = req.query;
@@ -24,7 +24,7 @@ export const googleCallback = async (req, res) => {///auth./google/callback?code
       return res.status(400).json({ message: "Authorization code missing" });
     }
 
-    // 3️⃣ Exchange code for Google access token
+    //  Exchange code for Google access token
     const tokenResponse = await axios.post(
       "https://oauth2.googleapis.com/token",
       qs.stringify({
@@ -43,7 +43,7 @@ export const googleCallback = async (req, res) => {///auth./google/callback?code
 
     const googleAccessToken = tokenResponse.data.access_token;
 
-    // 4️⃣ Fetch user profile from Google
+    //  Fetch user profile from Google
     const profileResponse = await axios.get(
       "https://www.googleapis.com/oauth2/v2/userinfo",
       {
@@ -55,7 +55,7 @@ export const googleCallback = async (req, res) => {///auth./google/callback?code
 
     const { id, name, email } = profileResponse.data;
 
-    // 5️⃣ Find or create user in DB
+    //  Find or create user in DB
     let user = await prisma.staff.findUnique({
       where: { email }
     });
@@ -65,13 +65,13 @@ export const googleCallback = async (req, res) => {///auth./google/callback?code
         data: {
           name,
           email,
-          providerId: id,        // 👈 renamed column
+          providerId: id,        //  renamed column
           authProvider: "GOOGLE"
         }
       });
     }
 
-    // 6️⃣ Issue YOUR access token
+    //  Issue YOUR access token
     const accessToken = jwt.sign(
       { userId: user.id , roleid:user.roleid },
       process.env.ACCESS_TOKEN_SECRET,
