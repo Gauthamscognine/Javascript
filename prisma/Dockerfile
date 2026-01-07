@@ -1,5 +1,5 @@
 # 1. Base image
-FROM node:24
+FROM node:20-alpine
 
 # 2. Work directory inside container
 WORKDIR /app
@@ -21,3 +21,5 @@ EXPOSE 3000
 
 # 8. Start server
 CMD ["node", "server.js"]
+
+

@@ -1,59 +1,24 @@
+
 # version: "3.9"
 
-# services:
-#   api:
-#     build: .
-#     container_name: prisma_api
-#     ports:
-#       - "3000:3000"
-#     depends_on:
-#       - db
-#     env_file:
-#       - .env
-#     command: sh -c "npx prisma generate && npx prisma migrate deploy && node server.js"
-
-
-#   db:
-#     image: postgres:15
-#     container_name: postgres_db
-#     restart: always
-#     environment:
-#       POSTGRES_USER: postgres
-#       POSTGRES_PASSWORD: gautamcognine
-#       POSTGRES_DB: mytestdb
-#     ports:
-#       - "5432:5432"
-#     volumes:
-#       - postgres_data:/var/lib/postgresql/data
-
-# volumes:
-#   postgres_data:
-
-
-
-
-version: "3.9"
-
 services:
-  db:
-    image: postgres:15
-    container_name: postgres_db
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: gautamcognine
-      POSTGRES_DB: mytestdb
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+  # db:
+  #   image: postgres:15
+  #   container_name: DATABASE
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: gautamcognine
+  #     POSTGRES_DB: mytestdb
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
 
   api:
     build: .
-    container_name: node_api
-    restart: always
-    depends_on:
-      - db
+    container_name: API
+    # restart: always
     ports:
       - "3000:3000"
     env_file:
@@ -61,5 +26,8 @@ services:
     
     command: sh -c "npx prisma generate && npx prisma migrate deploy && node server.js"
 
-volumes:
-  pgdata:
+# volumes:
+#   pgdata:
+
+# docker run -d --name ap_image -p 3000:3000 -e DATABASE_URL="postgresql://postgres:gautamcognine@host.docker.internal:5432/mytestdb" prisma-api sh -c "npx prisma generate && node server.js"
+#  use this command to run a new container witht he same image . 

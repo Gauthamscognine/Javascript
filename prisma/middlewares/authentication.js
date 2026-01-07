@@ -1,31 +1,9 @@
-
 import jwt from "jsonwebtoken"
-
-
-// export const authenticate = (req, res, next) => {
-//   const authHeader = req.headers.authorization;
-
-//   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-//     return res.status(401).json({ message: "Token missing" });
-//   }
-
-//   const token = authHeader.split(" ")[1];
-
-//   try {
-//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-//     req.user = decoded; // userId, email available here
-//     next();
-//   } catch (error) {
-//     return res.status(401).json({ message: "Invalid token" });
-//   }
-// };
-
-
 
 export const authenticate = (req, res, next) => {
   let token;
 
-  // 1️⃣ Try Authorization header first (recommended way)
+  
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer ")
@@ -33,17 +11,16 @@ export const authenticate = (req, res, next) => {
     token = req.headers.authorization.split(" ")[1];
   }
 
-  // 2️⃣ Fallback to query param (for browser testing)
+  
   if (!token && req.query.token) {
     token = req.query.token;
   }
 
-  // 3️⃣ No token found
   if (!token) {
     return res.status(401).json({ message: "Token missing" });
   }
 
-  // 4️⃣ Verify token
+  
   try {
     const decoded = jwt.verify(token, process.env.REFERESH_TOKEN_SECRET);
     req.user = decoded; // { userId, roleid, email, ... }
@@ -70,17 +47,3 @@ export const   authorizeRole = (allowedRoles = []) => {
   };
 };
 
-
-
-// JWT Tokens
-// CSRF 
-// Use cases of debounce and throttling
-// google authentication
-// diff dbs present in diff servers using prisma
-// Validation with Joi/Zod
-
-
-
-// follow - come after 
-// bif larfe - enormous 
-// clarity - vivet 

@@ -203,7 +203,7 @@
 
 
 import prisma from "../PrismaClient.js";
-import EmpError from "../utils/empError.js";
+import EmpError from "../utils/EmpError.js";
 
 /* ============================
    GET all employees
