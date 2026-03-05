@@ -1,5 +1,6 @@
 class Solution {
     public String convert(String s, int numRows) {
+        if(numRows==1)return s;
         List<List<Character>> arr = new ArrayList<>();
         for(int i = 0;i<numRows;i++){
             arr.add(new ArrayList<>());
