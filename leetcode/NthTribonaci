@@ -1,0 +1,15 @@
+class Solution {
+    public int tribonacci(int n) {
+        int[] arr = new int[38];
+        arr[0] = 0;
+        arr[1] = 1; 
+        arr[2] = 1;
+        int sum = 2;
+        for(int i=3;i<38;i++){
+            arr[i] = sum;
+            sum+=arr[i];
+            sum-=arr[i-3];
+        }
+        return arr[n];
+    }
+}
